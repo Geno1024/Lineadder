@@ -5,6 +5,7 @@ import android.os.*;
 import android.view.*;
 import android.widget.*;
 import android.view.View.*;
+import android.text.*;
 
 public class MainActivity extends Activity
 {
@@ -30,6 +31,8 @@ public class MainActivity extends Activity
 						o=o+s.charAt(i)+"̶";
 					}
 					e.setText(o);
+					ClipboardManager c = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+					c.setText(o);
 				}
 			}
 		);
