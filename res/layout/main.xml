@@ -8,13 +8,26 @@
 	<EditText
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
-		android:id="@+id/in"/>
+		android:id="@+id/delin"
+		android:hint="del"/>
 
 	<Button
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
 		android:text="Button"
-		android:id="@+id/out"/>
+		android:id="@+id/delout"/>
+
+	<EditText
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:id="@+id/slsin"
+		android:hint="sls"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="Button"
+		android:id="@+id/slsout"/>
 
 </LinearLayout>
 
