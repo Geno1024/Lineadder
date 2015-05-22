@@ -25,6 +25,9 @@ public class MainActivity extends Activity
 				String chars = "";
 				switch(p1.getId())
 				{
+					case R.id.wavout:
+						chars="\u0334";
+						break;
 					case R.id.delout:
 						chars="\u0336";
 						break;
@@ -42,7 +45,9 @@ public class MainActivity extends Activity
 				c.setText(total);
 			}
 		};
+		((Button)findViewById(R.id.wavout)).setOnClickListener(o);
 		((Button)findViewById(R.id.delout)).setOnClickListener(o);
 		((Button)findViewById(R.id.slsout)).setOnClickListener(o);
     }
 }
+

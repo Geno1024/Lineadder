@@ -8,6 +8,18 @@
 	<EditText
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
+		android:id="@+id/wavin"
+		android:hint="wav"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="Button"
+		android:id="@+id/wavout"/>
+
+	<EditText
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
 		android:id="@+id/delin"
 		android:hint="del"/>
 
