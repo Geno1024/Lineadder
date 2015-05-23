@@ -8,6 +8,30 @@
 	<EditText
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
+		android:id="@+id/udwin"
+		android:hint="udw"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="Button"
+		android:id="@+id/udwout"/>
+
+	<EditText
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
+		android:hint="udl"
+		android:id="@+id/udlin"/>
+
+	<Button
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:text="Button"
+		android:id="@+id/udlout"/>
+
+	<EditText
+		android:layout_height="wrap_content"
+		android:layout_width="match_parent"
 		android:id="@+id/wavin"
 		android:hint="wav"/>
 
