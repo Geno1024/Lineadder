@@ -6,6 +6,7 @@ import android.view.*;
 import android.widget.*;
 import android.view.View.*;
 import android.text.*;
+import android.database.*;
 
 public class MainActivity extends Activity
 {
@@ -16,6 +17,73 @@ public class MainActivity extends Activity
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+		Spinner s = new Spinner(this);
+		SpinnerAdapter a = new SpinnerAdapter()
+		{
+			@Override
+			public void registerDataSetObserver(DataSetObserver p1)
+			{
+			}
+
+			@Override
+			public void unregisterDataSetObserver(DataSetObserver p1)
+			{
+			}
+
+			@Override
+			public int getCount()
+			{
+				return 0;
+			}
+
+			@Override
+			public Object getItem(int p1)
+			{
+				return null;
+			}
+
+			@Override
+			public long getItemId(int p1)
+			{
+				return 0;
+			}
+
+			@Override
+			public boolean hasStableIds()
+			{
+				return false;
+			}
+
+			@Override
+			public View getView(int p1, View p2, ViewGroup p3)
+			{
+				return null;
+			}
+
+			@Override
+			public int getItemViewType(int p1)
+			{
+				return 0;
+			}
+
+			@Override
+			public int getViewTypeCount()
+			{
+				return 0;
+			}
+
+			@Override
+			public boolean isEmpty()
+			{
+				return false;
+			}
+
+			@Override
+			public View getDropDownView(int p1, View p2, ViewGroup p3)
+			{
+				return null;
+			}
+		};
 		OnClickListener o = new OnClickListener()
 		{
 			@Override
