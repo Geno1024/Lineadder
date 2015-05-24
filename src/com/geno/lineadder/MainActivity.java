@@ -12,11 +12,14 @@ public class MainActivity extends Activity
 {
 	public Button delout;
 	public EditText delin;
+	public String[] charname,charcode;
     @Override
     public void onCreate(Bundle savedInstanceState)
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+		charname = new String[]{"Underline"};
+		charcode = new String[]{"\u0330"};
 		Spinner s = (Spinner)findViewById(R.id.selector);
 		SpinnerAdapter a = new SpinnerAdapter()
 		{
@@ -33,13 +36,13 @@ public class MainActivity extends Activity
 			@Override
 			public int getCount()
 			{
-				return 0;
+				return charname.length;
 			}
 
 			@Override
 			public Object getItem(int p1)
 			{
-				return null;
+				return charname[p1];
 			}
 
 			@Override
@@ -69,7 +72,7 @@ public class MainActivity extends Activity
 			@Override
 			public int getViewTypeCount()
 			{
-				return 0;
+				return 1;
 			}
 
 			@Override
