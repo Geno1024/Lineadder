@@ -17,7 +17,7 @@ public class MainActivity extends Activity
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-		Spinner s = new Spinner(this);
+		Spinner s = (Spinner)findViewById(R.id.selector);
 		SpinnerAdapter a = new SpinnerAdapter()
 		{
 			@Override
@@ -84,6 +84,7 @@ public class MainActivity extends Activity
 				return null;
 			}
 		};
+		s.setAdapter(a);
 		OnClickListener o = new OnClickListener()
 		{
 			@Override
