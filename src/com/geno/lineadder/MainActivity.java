@@ -7,6 +7,7 @@ import android.widget.*;
 import android.view.View.*;
 import android.text.*;
 import android.database.*;
+import android.graphics.*;
 
 public class MainActivity extends Activity
 {
@@ -68,13 +69,14 @@ public class MainActivity extends Activity
 			{
 				String s = "   ";
 				for(int i=0;i<5;i++)
-					s=s+charcode[position]+"  ";
+					s=s+charcode[position]+" ";
 				s=s+" 0x0"+Integer.toHexString(position+0x0300).toUpperCase();
 				LinearLayout l = new LinearLayout(MainActivity.this);
 				TextView t = new TextView(MainActivity.this);
 				t.setText(charname[position]+s);
 				t.setTextSize(20);
 				t.setPadding(20,20,0,20);
+				t.setTypeface(Typeface.MONOSPACE);
 				l.addView(t,LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
 				return l;
 			}
@@ -102,12 +104,13 @@ public class MainActivity extends Activity
 			{
 				String s = "   ";
 				for(int i=0;i<5;i++)
-					s=s+charcode[p1]+"  ";
+					s=s+charcode[p1]+" ";
 				s=s+" 0x0"+Integer.toHexString(p1+0x0300).toUpperCase()+"    Debug:"+(p1+5);
 				LinearLayout l = new LinearLayout(MainActivity.this);
 				TextView t = new TextView(MainActivity.this);
 				t.setText(charname[p1]+s);
 				t.setTextSize(20);
+				t.setTypeface(Typeface.MONOSPACE);
 				t.setPadding(20,20,0,20);
 				l.addView(t,LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
 				return l;
