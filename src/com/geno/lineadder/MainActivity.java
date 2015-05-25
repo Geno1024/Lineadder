@@ -103,7 +103,7 @@ public class MainActivity extends Activity
 				String s = "   ";
 				for(int i=0;i<5;i++)
 					s=s+charcode[p1]+"  ";
-				s=s+" 0x0"+Integer.toHexString(p1+0x0300).toUpperCase();
+				s=s+" 0x0"+Integer.toHexString(p1+0x0300).toUpperCase()+"    Debug:"+(p1+5);
 				LinearLayout l = new LinearLayout(MainActivity.this);
 				TextView t = new TextView(MainActivity.this);
 				t.setText(charname[p1]+s);
