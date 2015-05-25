@@ -8,62 +8,13 @@
 	<EditText
 		android:layout_height="wrap_content"
 		android:layout_width="match_parent"
-		android:id="@+id/udwin"
-		android:hint="udw"/>
+		android:id="@+id/in"/>
 
 	<Button
 		android:layout_height="wrap_content"
 		android:layout_width="wrap_content"
-		android:text="Button"
-		android:id="@+id/udwout"/>
-
-	<EditText
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:hint="udl"
-		android:id="@+id/udlin"/>
-
-	<Button
-		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-		android:text="Button"
-		android:id="@+id/udlout"/>
-
-	<EditText
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:id="@+id/wavin"
-		android:hint="wav"/>
-
-	<Button
-		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-		android:text="Button"
-		android:id="@+id/wavout"/>
-
-	<EditText
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:id="@+id/delin"
-		android:hint="del"/>
-
-	<Button
-		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-		android:text="Button"
-		android:id="@+id/delout"/>
-
-	<EditText
-		android:layout_height="wrap_content"
-		android:layout_width="match_parent"
-		android:id="@+id/slsin"
-		android:hint="sls"/>
-
-	<Button
-		android:layout_height="wrap_content"
-		android:layout_width="wrap_content"
-		android:text="Button"
-		android:id="@+id/slsout"/>
+		android:text="Add it!"
+		android:id="@+id/out"/>
 
 	<Spinner
 		android:layout_height="wrap_content"

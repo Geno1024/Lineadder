@@ -2,5 +2,7 @@
 <resources>
 
     <string name="app_name">LineAdder</string>
-
+	<string-array name="charname">
+		<item>Underline</item>
+	</string-array>
 </resources>
