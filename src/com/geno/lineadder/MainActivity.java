@@ -21,7 +21,7 @@ public class MainActivity extends Activity
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-		charname = getResources().getStringArray(R.array.charname);
+		charname = getResources().getStringArray(R.array.unicodename);
 		charcode = new String[112];
 		for(int i = 0;i < 112;i++)
 		{
@@ -120,7 +120,6 @@ public class MainActivity extends Activity
 		s.setOnItemSelectedListener
 		(new AdapterView.OnItemSelectedListener()
 			{
-
 				@Override
 				public void onItemSelected(AdapterView<?> p1, View p2, int p3, long p4)
 				{
