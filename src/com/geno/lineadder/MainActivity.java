@@ -67,14 +67,14 @@ public class MainActivity extends Activity
 			@Override
 			public View getView(int position, View convertView, ViewGroup parent)
 			{
-				String s = "   ";
+				String s = " ";
 				for(int i=0;i<5;i++)
 					s=s+charcode[position]+" ";
-				s=s+" 0x0"+Integer.toHexString(position+0x0300).toUpperCase();
+				s="0x0"+Integer.toHexString(position+0x0300).toUpperCase()+" "+s;
 				LinearLayout l = new LinearLayout(MainActivity.this);
 				TextView t = new TextView(MainActivity.this);
-				t.setText(charname[position]+s);
-				t.setTextSize(20);
+				t.setText(s+charname[position]);
+				t.setTextSize(15);
 				t.setPadding(20,20,0,20);
 				t.setTypeface(Typeface.MONOSPACE);
 				l.addView(t,LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -102,14 +102,14 @@ public class MainActivity extends Activity
 			@Override
 			public View getDropDownView(int p1, View p2, ViewGroup p3)
 			{
-				String s = "   ";
+				String s = " ";
 				for(int i=0;i<5;i++)
 					s=s+charcode[p1]+" ";
-				s=s+" 0x0"+Integer.toHexString(p1+0x0300).toUpperCase()+"    Debug:"+(p1+5);
+				s="0x0"+Integer.toHexString(p1+0x0300).toUpperCase()+" "+s;
 				LinearLayout l = new LinearLayout(MainActivity.this);
 				TextView t = new TextView(MainActivity.this);
-				t.setText(charname[p1]+s);
-				t.setTextSize(20);
+				t.setText(s+charname[p1]);
+				t.setTextSize(15);
 				t.setTypeface(Typeface.MONOSPACE);
 				t.setPadding(20,20,0,20);
 				l.addView(t,LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
