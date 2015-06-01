@@ -144,6 +144,7 @@ public class MainActivity extends Activity
 					for(int i = 0;i<total.length();i++)
 						res=res+total.charAt(i)+chars;
 					((EditText)findViewById(R.id.in)).setText(res);
+					((ClipboardManager)getSystemService(CLIPBOARD_SERVICE)).setText(((EditText)findViewById(R.id.in)).getText().toString());
 				}
 			}
 		);
