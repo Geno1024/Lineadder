@@ -21,9 +21,9 @@ public class MainActivity extends Activity
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-		charname = getResources().getStringArray(R.array.unicodename);
-		charcode = new String[112];
-		for(int i = 0;i < 112;i++)
+		charname = getResources().getStringArray(R.array.combining_diacritical_marks);
+		charcode = new String[0x70];
+		for(int i = 0;i < 0x70;i++)
 		{
 			charcode[i]=String.valueOf(Character.toChars(i+0x0300)[0]);
 		}

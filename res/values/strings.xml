@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">LineAdder</string>
-	<string-array name="unicodename">
+	<string-array name="combining_diacritical_marks"><!--0300-036F-->
 		<item>Grave Accent</item>
 		<item>Acute Accent</item>
 		<item>Circumflex Accent</item>
@@ -114,5 +114,72 @@
 		<item>Latin Small Letter t</item>
 		<item>Latin Small Letter v</item>
 		<item>Latin Small Letter x</item>
+	</string-array>
+
+	<string-array name="cyrillic"><!--0483-0489-->
+		<item>Tilto</item>
+		<item>Palatalization</item>
+		<item>Dasia Pneumata</item>
+		<item>Psili Pneumata</item>
+		<item>Pokrytie</item>
+		<item>Hundred Thousands Sign</item>
+		<item>Millions Sign</item>
+	</string-array>
+
+	<string-array name="hebrew"><!--0591-05C7-->
+		<item>Etnahta</item>
+		<item>Segol</item>
+		<item>Shalshelet</item>
+		<item>Zaqef Qatan</item>
+		<item>Zaqef Gadol</item>
+		<item>Tipeha</item>
+		<item>Revia</item>
+		<item>Zarqa</item>
+		<item>Pashta</item>
+		<item>Yetiv</item>
+		<item>Tevir</item>
+		<item>Geresh</item>
+		<item>Geresh Muqdam</item>
+		<item>Gershayim</item>
+		<item>Qarney Para</item>
+		<item>Telisha Gedola</item>
+		<item>Pazer</item>
+		<item>Atnah Hafukh</item>
+		<item>Munah</item>
+		<item>Mahapakh</item>
+		<item>Merkha</item>
+		<item>Merkha Kefula</item>
+		<item>Darga</item>
+		<item>Qadma</item>
+		<item>Telisha Qetana</item>
+		<item>Yerah Ben Yomo</item>
+		<item>Ole</item>
+		<item>Iluy</item>
+		<item>Dehi</item>
+		<item>Zinor</item>
+		<item>Masora Circle</item>
+		<item>Sheva</item>
+		<item>Hataf Segol</item>
+		<item>Hataf Patah</item>
+		<item>Hataf Qamats</item>
+		<item>Hiriq</item>
+		<item>Tsere</item>
+		<item>Segol</item>
+		<item>Patah</item>
+		<item>Qamats</item>
+		<item>Holam</item>
+		<item>Holam Haser For Vav</item>
+		<item>Qubuts</item>
+		<item>Meteg</item>
+		<item>Maqaf</item>
+		<item>Rafe</item>
+		<item>Paseq</item>
+		<item>Shin Dot</item>
+		<item>Sin Dot</item>
+		<item>Sof Pasuq</item>
+		<item>Upper Dot</item>
+		<item>Lower Dot</item>
+		<item>Nun Hafukha</item>
+		<item>Qamats Qatan</item>
 	</string-array>
 </resources>
