@@ -21,11 +21,16 @@ public class MainActivity extends Activity
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-		charname = getResources().getStringArray(R.array.combining_diacritical_marks);
-		charcode = new String[0x70];
-		for(int i = 0;i < 0x70;i++)
+		charcode = new String[0x70 + 0x7];
+		for(int i = 0; i < 0x70; i++)
 		{
 			charcode[i]=String.valueOf(Character.toChars(i+0x0300)[0]);
+			charname[i]=getResources().getStringArray(R.array.combining_diacritical_marks)[i];
+		}
+		for(int i = 0; i < 0x7; i++)
+		{
+			charcode[0x70 + i]=String.valueOf(Character.toChars(i+0x0483)[0]);
+			charname[0x70 + i]=getResources().getStringArray(R.array.)
 		}
 		Spinner s = (Spinner)findViewById(R.id.selector);
 		SpinnerAdapter a = new SpinnerAdapter()
