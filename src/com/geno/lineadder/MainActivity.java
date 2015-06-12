@@ -1,5 +1,6 @@
 package com.geno.lineadder;
 
+import android.annotation.SuppressLint;
 import android.app.*;
 import android.os.*;
 import android.view.*;
@@ -9,6 +10,7 @@ import android.text.*;
 import android.database.*;
 import android.graphics.*;
 
+@SuppressLint("NewApi") 
 public class MainActivity extends Activity
 {
 	public Button delout;
@@ -16,52 +18,65 @@ public class MainActivity extends Activity
 	public int[] charcode;
 	public String total = "";
 	public String chars = "";
+	public int[] len, pos;
     @Override
     public void onCreate(Bundle savedInstanceState)
 	{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-		charcode = new int[0xE2];
-		/*	Name 		*	Position 	*	Length	*	Sum
-		 *				*				*	(Hex)	*
-		 *				*				*			*
-		 *	Combining	*	0300-036F	*	70		*	0
-		 *	Cyrillic	*	0483-0489	*	7		*	70
-		 *	Hebrew		*	0591-05C7	*	37		*	77
-		 *	Arabic		*	0610-061A	*	B		*	AE
-		 *				*				*			*
-		 *				*	064B-065F	*	15		*	B7
-		 *				*	06D6-06ED	*	18		*	CB
-		 *	Syriac		*	0730-074A	*	1B		*	E2
-		 *	Thaana		*	07A6-07B0	*	B		*	FC
-		 *				*				*			*
-		 *	NKo			*	07EB-07F3	*	A		*	106
-		 *	Samaritan	*	0816-082D	*	1A		*	10F
-		 *	Mandaic		*	0859-085B	*	3		*	128
-		 *	ArabExtA	*	08E3-08FF	*	1D		*	12B
-		 *				*				*			*
-		 *	Devanagari	*	0900-0903	*	4		*	148
-		 *				*	093A-0957	*	1B		*	14C
-		 *	Thai		*	0E31-0E4F	*	1E		*	167
-		 *	Tibetan		*	0F70-0FDA	*	6A		*	185
-		 *				*				*			*
-		 *	Myanmar		*	102B-109D	*	2		*	1FF
-		 *	Tai Tham	*	1A55-1A7F	*			*
-		 *	CDEExt		*	1AB0-1ABE	*			*
-		 *	Lepcha		*	1C24-1C37	*			*
-		 *				*				*			*
-		 *	VedicExt	*	1CD0-1CFF	*			*
-		 *	CDMSupple	*	1DC0-1DFF	*			*
-		 *	CDMSymbol	*	20D0-20FF	*			*
-		 *	CyrillicExt	*	2DE0-2DFF	*			*
-		 **/
-		for(int i = 0; i < 0x70; i++){charcode[i] = i + 0x0300;}
-		for(int i = 0; i < 0x7; i++){charcode[0x70 + i] = i + 0x0483;}
-		for(int i = 0; i < 0x36; i++){charcode[0x77 + i] = i + 0x0591;}
-		for(int i = 0; i < 0xA; i++){charcode[0xAD + i] = i + 0x0610;}
-
-		for(int i = 0; i < 0x14; i++){charcode[0xB7 + i] = i + 0x064B;}
-		for(int i = 0; i < 0x17; i++){charcode[0xCB + i] = i + 0x06D6;}
+        len = new int[]{0x0300 - 0x036F , 0x0483 - 0x0489 , 0x0591 - 0x05C7 , 0x0610 - 0x061A ,
+        				0x064B - 0x065F , 0x06D6 - 0x06ED , 0x0730 - 0x074A , 0x07A6 - 0x07B0 ,
+        				0x07EB - 0x07F3 , 0x0816 - 0x082D , 0x0859 - 0x085B , 0x08E3 - 0x08FF ,
+        				0x0900 - 0x0903 , 0x093A - 0x0957 , 0x0E31 - 0x0E4F , 0x0F70 - 0x0FDA ,
+        				0x102B - 0x109D , 0x1A55 - 0x1A7F , 0x1AB0 - 0x1ABE , 0x1C24 - 0x1C37 ,
+        				0x1CD0 - 0x1CFF , 0x1DC0 - 0x1DFF , 0x20D0 - 0x20FF , 0x2DE0 - 0x2DFF };
+        pos = new int[]{0x0300 , 0x0483 , 0x0591 , 0x0610 , 
+						0x064B , 0x06D6 , 0x0730 , 0x07A6 , 
+						0x07EB , 0x0816 , 0x0859 , 0x08E3 , 
+						0x0900 , 0x093A , 0x0E31 , 0x0F70 , 
+						0x102B , 0x1A55 , 0x1AB0 , 0x1C24 , 
+						0x1CD0 , 0x1DC0 , 0x20D0 , 0x2DE0 };
+        for(int i = 0; i < len.length; i++)
+        {
+        	len[i] = - len[i];
+        }
+		charcode = new int[sum(len, len.length)];
+		for(int i = 0; i < len.length; i++)
+		{
+			for(int j = 0; j < len[i]; j++)
+			{charcode[sum(len, i) + j] = j + pos[i];}
+		}
+		//	Name 		*	Position 	
+		//				*
+		//	Combining	*	0x0300-0x036F
+		//	Cyrillic	*	0x0483-0x0489
+		//	Hebrew		*	0x0591-0x05C7
+		//	Arabic		*	0x0610-0x061A
+		//				*
+		//				*	0x064B-0x065F
+		//				*	0x06D6-0x06ED
+		//	Syriac		*	0x0730-0x074A
+		//	Thaana		*	0x07A6-0x07B0
+		//				*
+		//	NKo			*	0x07EB-0x07F3
+		//	Samaritan	*	0x0816-0x082D
+		//	Mandaic		*	0x0859-0x085B
+		//	ArabExtA	*	0x08E3-0x08FF
+		//				*
+		//	Devanagari	*	0x0900-0x0903
+		//				*	0x093A-0x0957
+		//	Thai		*	0x0E31-0x0E4F
+		//	Tibetan		*	0x0F70-0x0FDA
+		//				*
+		//	Myanmar		*	0x102B-0x109D
+		//	Tai Tham	*	0x1A55-0x1A7F
+		//	CDEExt		*	0x1AB0-0x1ABE
+		//	Lepcha		*	0x1C24-0x1C37
+		//				*
+		//	VedicExt	*	0x1CD0-0x1CFF
+		//	CDMSupple	*	0x1DC0-0x1DFF
+		//	CDMSymbol	*	0x20D0-0x20FF
+		//	CyrillicExt	*	0x2DE0-0x2DFF
 		Spinner s = (Spinner)findViewById(R.id.selector);
 		SpinnerAdapter a = new SpinnerAdapter()
 		{
@@ -184,5 +199,36 @@ public class MainActivity extends Activity
 			}
 		);
 	}
+
+	private int sum(int[] len, int j)
+	{
+		int sum = 0;
+		for (int i = 0; i < j; i ++) 
+		{
+			sum = sum + len[i];
+		}
+		return sum;
+	}
+
+    private static native String getNameImpl(int codePoint);
+    
+    private static void checkValidCodePoint(int codePoint) {
+        if (!java.lang.Character.isValidCodePoint(codePoint)) {
+            throw new IllegalArgumentException("Invalid code point: " + codePoint);
+        }
+    }
+	
+    public static String getName(int codePoint) {
+        checkValidCodePoint(codePoint);
+        if (java.lang.Character.getType(codePoint) == Character.UNASSIGNED) {
+            return null;
+        }
+        String result = getNameImpl(codePoint);
+        if (result == null) {
+            String blockName = Character.UnicodeBlock.of(codePoint).toString().replace('_', ' ');
+            result = blockName + " " + Integer.toHexString(codePoint);
+        }
+        return result;
+    }
 }
 
