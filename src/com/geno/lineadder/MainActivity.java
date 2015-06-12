@@ -1,5 +1,7 @@
 package com.geno.lineadder;
 
+import java.util.Locale;
+
 import android.annotation.SuppressLint;
 import android.app.*;
 import android.os.*;
@@ -19,27 +21,33 @@ public class MainActivity extends Activity
 	public String total = "";
 	public String chars = "";
 	public int[] len, pos;
-    @Override
-    public void onCreate(Bundle savedInstanceState)
+	@Override
+	public void onCreate(Bundle savedInstanceState)
 	{
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
-        len = new int[]{0x0300 - 0x036F , 0x0483 - 0x0489 , 0x0591 - 0x05C7 , 0x0610 - 0x061A ,
-        				0x064B - 0x065F , 0x06D6 - 0x06ED , 0x0730 - 0x074A , 0x07A6 - 0x07B0 ,
-        				0x07EB - 0x07F3 , 0x0816 - 0x082D , 0x0859 - 0x085B , 0x08E3 - 0x08FF ,
-        				0x0900 - 0x0903 , 0x093A - 0x0957 , 0x0E31 - 0x0E4F , 0x0F70 - 0x0FDA ,
-        				0x102B - 0x109D , 0x1A55 - 0x1A7F , 0x1AB0 - 0x1ABE , 0x1C24 - 0x1C37 ,
-        				0x1CD0 - 0x1CFF , 0x1DC0 - 0x1DFF , 0x20D0 - 0x20FF , 0x2DE0 - 0x2DFF };
-        pos = new int[]{0x0300 , 0x0483 , 0x0591 , 0x0610 , 
-						0x064B , 0x06D6 , 0x0730 , 0x07A6 , 
-						0x07EB , 0x0816 , 0x0859 , 0x08E3 , 
-						0x0900 , 0x093A , 0x0E31 , 0x0F70 , 
-						0x102B , 0x1A55 , 0x1AB0 , 0x1C24 , 
-						0x1CD0 , 0x1DC0 , 0x20D0 , 0x2DE0 };
-        for(int i = 0; i < len.length; i++)
-        {
-        	len[i] = - len[i];
-        }
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		len = new int[]{0x0300 - 0x036F , 0x0483 - 0x0489 , 0x0591 - 0x05C7 , 0x0610 - 0x061A ,
+						0x064B - 0x065F , 0x06D6 - 0x06ED , 0x0730 - 0x074A , 0x07A6 - 0x07B0 ,
+						0x07EB - 0x07F3 , 0x0816 - 0x082D , 0x0859 - 0x085B , 0x08E3 - 0x08FF ,
+						0x0900 - 0x0903 , 0x093A - 0x0957 , 0x0E31 - 0x0E4F , 0x0F70 - 0x0FDA ,
+						0x102B - 0x109D , 0x1A55 - 0x1A7F , 0x1AB0 - 0x1ABE , 0x1C24 - 0x1C37 ,
+						0x1CD0 - 0x1CFF , 0x1DC0 - 0x1DFF , 0x20D0 - 0x20FF , 0x2DE0 - 0x2DFF ,
+						0x302A - 0x302F , 0x3099 - 0x309A , 0xA66F - 0xA67D , 0xA69E - 0xA69F ,
+						0xA6F0 - 0xA6F1 , 0xA8E0 - 0xA8F1 , 0xA926 - 0xA92D , 0xA947 - 0xA953 ,
+						0xFE20 - 0xFE2F};
+		pos = new int[]{0x0300 , 0x0483 , 0x0591 , 0x0610 ,
+						0x064B , 0x06D6 , 0x0730 , 0x07A6 ,
+						0x07EB , 0x0816 , 0x0859 , 0x08E3 ,
+						0x0900 , 0x093A , 0x0E31 , 0x0F70 ,
+						0x102B , 0x1A55 , 0x1AB0 , 0x1C24 ,
+						0x1CD0 , 0x1DC0 , 0x20D0 , 0x2DE0 ,
+						0x302A , 0x3099 , 0xA66F , 0xA69E ,
+						0xA6F0 , 0xA8E0 , 0xA926 , 0xA947 ,
+						0xFE20};
+		for(int i = 0; i < len.length; i++)
+		{
+			len[i] = - len[i];
+		}
 		charcode = new int[sum(len, len.length)];
 		for(int i = 0; i < len.length; i++)
 		{
@@ -77,6 +85,17 @@ public class MainActivity extends Activity
 		//	CDMSupple	*	0x1DC0-0x1DFF
 		//	CDMSymbol	*	0x20D0-0x20FF
 		//	CyrillicExt	*	0x2DE0-0x2DFF
+		//				*
+		//	CJKSymb		*	0x302A-0x302F
+		//	Hiragana	*	0x3099-0x309A
+		//	CyrilExtB	*	0xA66F-0xA67D
+		//				*	0xA69E-0xA69F
+		//				*
+		//	Bamum		*	0xA6F0-0xA6F1
+		//	DevanagariEx*	0xA8E0-0xA8F1
+		//	Kayah Li	*	0xA926-0xA92D
+		//	Rejang		*	0xA947-0xA953
+		//	CombHalfMark*	0xFE20-0xFE2F
 		Spinner s = (Spinner)findViewById(R.id.selector);
 		SpinnerAdapter a = new SpinnerAdapter()
 		{
@@ -120,7 +139,7 @@ public class MainActivity extends Activity
 				String s = " ";
 				for(int i=0;i<5;i++)
 					s=s+Character.toChars(charcode[position])[0]+" ";
-				s="0x"+Integer.toHexString(charcode[position]).toUpperCase()+" "+s;
+				s="0x"+Integer.toHexString(charcode[position]).toUpperCase(Locale.ENGLISH)+" "+s;
 				LinearLayout l = new LinearLayout(MainActivity.this);
 				TextView t = new TextView(MainActivity.this);
 				t.setText(s+Character.getName(charcode[position]));
@@ -155,7 +174,7 @@ public class MainActivity extends Activity
 				String s = " ";
 				for(int i=0;i<5;i++)
 					s=s+Character.toChars(charcode[p1])[0]+" ";
-				s="0x"+Integer.toHexString(charcode[p1]).toUpperCase()+" "+s;
+				s="0x"+Integer.toHexString(charcode[p1]).toUpperCase(Locale.ENGLISH)+" "+s;
 				LinearLayout l = new LinearLayout(MainActivity.this);
 				TextView t = new TextView(MainActivity.this);
 				t.setText(s+Character.getName(charcode[p1]));
@@ -210,25 +229,35 @@ public class MainActivity extends Activity
 		return sum;
 	}
 
-    private static native String getNameImpl(int codePoint);
-    
-    private static void checkValidCodePoint(int codePoint) {
-        if (!java.lang.Character.isValidCodePoint(codePoint)) {
-            throw new IllegalArgumentException("Invalid code point: " + codePoint);
-        }
-    }
+	//Next are ways of getName(int codePoint) in Android API 19's android.jar source
+	//	with a little modify for better use
+	//But the native getNameImpl(int codePoint) maybe not supported while (Android API < 19)
+
+	private static native String getNameImpl(int codePoint);
 	
-    public static String getName(int codePoint) {
-        checkValidCodePoint(codePoint);
-        if (java.lang.Character.getType(codePoint) == Character.UNASSIGNED) {
-            return null;
-        }
-        String result = getNameImpl(codePoint);
-        if (result == null) {
-            String blockName = Character.UnicodeBlock.of(codePoint).toString().replace('_', ' ');
-            result = blockName + " " + Integer.toHexString(codePoint);
-        }
-        return result;
-    }
+	private static void checkValidCodePoint(int codePoint) {
+		if (!java.lang.Character.isValidCodePoint(codePoint)) {
+			throw new IllegalArgumentException("Invalid code point: " + codePoint);
+		}
+	}
+	
+	public static String getName(int codePoint)
+	{
+		if(android.os.Build.VERSION.SDK_INT >= 19)
+		{
+			checkValidCodePoint(codePoint);
+			if (java.lang.Character.getType(codePoint) == Character.UNASSIGNED) {
+				return null;
+			}
+			String result = getNameImpl(codePoint);
+			if (result == null) {
+				String blockName = Character.UnicodeBlock.of(codePoint).toString().replace('_', ' ');
+				result = blockName + " " + Integer.toHexString(codePoint);
+			}
+		return result;
+		}
+		else
+			return "";
+	}
 }
 
